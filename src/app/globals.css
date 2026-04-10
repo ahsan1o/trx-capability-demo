@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-start: #03131b;
+  --bg-mid: #0c1f2e;
+  --bg-end: #102a43;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: #d7f4ed;
+  font-family: var(--font-heading), "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(10, 147, 150, 0.28), transparent 35%),
+    radial-gradient(circle at 90% 14%, rgba(233, 216, 166, 0.22), transparent 30%),
+    linear-gradient(140deg, var(--bg-start), var(--bg-mid) 45%, var(--bg-end));
+}
+
+.aurora {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(600px 300px at 15% 65%, rgba(148, 210, 189, 0.08), transparent),
+    radial-gradient(700px 360px at 85% 25%, rgba(10, 147, 150, 0.12), transparent);
+  animation: floatGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes floatGlow {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+  100% {
+    transform: translateY(-8px) scale(1.02);
+  }
+}
+
+@layer components {
+  .panel {
+    @apply rounded-2xl border border-white/15 bg-white/5 p-5 shadow-xl backdrop-blur;
+  }
+
+  .card {
+    @apply rounded-xl border border-white/15 bg-ink/50 p-4;
+  }
+
+  .input {
+    @apply w-full rounded-lg border border-white/20 bg-ink/40 px-3 py-2 text-mist outline-none transition focus:border-sea/60;
+    font-family: var(--font-mono), monospace;
+  }
+
+  .field-label {
+    @apply mt-3 mb-1 block text-xs uppercase tracking-[0.16em] text-mist/75;
+  }
+
+  .button-primary {
+    @apply rounded-lg bg-sea px-4 py-2 font-medium text-ink transition hover:brightness-110;
+  }
+
+  .button-secondary {
+    @apply rounded-lg border border-sea/40 bg-sea/10 px-4 py-2 font-medium text-mist transition hover:bg-sea/20;
+  }
+
+  .button-danger {
+    @apply rounded-lg border border-red-400/40 bg-red-500/10 px-4 py-2 font-medium text-red-100 transition hover:bg-red-500/20;
+  }
+
+  .chip {
+    @apply rounded-full border border-white/20 px-3 py-1 text-sm text-mist/90 transition hover:border-sea/40 hover:bg-sea/10;
+  }
+
+  .chip-active {
+    @apply rounded-full border border-sea/60 bg-sea/20 px-3 py-1 text-sm text-mist;
+  }
+
+  .badge {
+    @apply rounded-full border border-sand/50 bg-sand/10 px-3 py-1 text-xs uppercase tracking-wider text-sand;
+  }
+
+  .status-pending {
+    @apply rounded-full border border-amber-300/50 bg-amber-300/10 px-2 py-1 text-xs uppercase text-amber-100;
+  }
+
+  .status-confirmed {
+    @apply rounded-full border border-emerald-300/50 bg-emerald-300/10 px-2 py-1 text-xs uppercase text-emerald-100;
+  }
+
+  .status-failed {
+    @apply rounded-full border border-red-300/50 bg-red-300/10 px-2 py-1 text-xs uppercase text-red-100;
+  }
+}
