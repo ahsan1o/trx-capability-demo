@@ -1,13 +1,14 @@
 /** @type {import('next').NextConfig} */
-const repoName = "trx-capability-demo";
-const isGitHubPages = process.env.GITHUB_PAGES === "true";
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
+const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1] ?? "";
+const basePath = isGithubActions && repositoryName ? `/${repositoryName}` : "";
 
 const nextConfig = {
   reactStrictMode: true,
   output: "export",
   trailingSlash: true,
-  basePath: isGitHubPages ? `/${repoName}` : "",
-  assetPrefix: isGitHubPages ? `/${repoName}/` : "",
+  basePath,
+  assetPrefix: basePath,
   images: {
     unoptimized: true
   }

@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --bg-start: #03131b;
-  --bg-mid: #0c1f2e;
-  --bg-end: #102a43;
+  --bg-start: #031423;
+  --bg-mid: #0b2a38;
+  --bg-end: #153847;
 }
 
 * {
@@ -16,11 +16,11 @@ body {
   margin: 0;
   min-height: 100vh;
   color: #d7f4ed;
-  font-family: var(--font-heading), "Segoe UI", sans-serif;
+  font-family: "Avenir Next", "Segoe UI", "Trebuchet MS", sans-serif;
   background:
-    radial-gradient(circle at 12% 18%, rgba(10, 147, 150, 0.28), transparent 35%),
-    radial-gradient(circle at 90% 14%, rgba(233, 216, 166, 0.22), transparent 30%),
-    linear-gradient(140deg, var(--bg-start), var(--bg-mid) 45%, var(--bg-end));
+    radial-gradient(circle at 14% 16%, rgba(0, 190, 200, 0.26), transparent 38%),
+    radial-gradient(circle at 87% 10%, rgba(255, 209, 102, 0.2), transparent 34%),
+    linear-gradient(140deg, var(--bg-start), var(--bg-mid) 48%, var(--bg-end));
 }
 
 .aurora {
@@ -29,9 +29,22 @@ body {
   pointer-events: none;
   z-index: -1;
   background:
-    radial-gradient(600px 300px at 15% 65%, rgba(148, 210, 189, 0.08), transparent),
-    radial-gradient(700px 360px at 85% 25%, rgba(10, 147, 150, 0.12), transparent);
-  animation: floatGlow 10s ease-in-out infinite alternate;
+    radial-gradient(600px 300px at 12% 74%, rgba(148, 210, 189, 0.12), transparent),
+    radial-gradient(700px 360px at 88% 22%, rgba(10, 147, 150, 0.18), transparent);
+  animation: floatGlow 12s ease-in-out infinite alternate;
+}
+
+.mesh {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+  opacity: 0.25;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(circle at center, black 25%, transparent 80%);
 }
 
 @keyframes floatGlow {
@@ -46,15 +59,17 @@ body {
 @layer components {
   .panel {
     @apply rounded-2xl border border-white/15 bg-white/5 p-5 shadow-xl backdrop-blur;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.25);
   }
 
   .card {
     @apply rounded-xl border border-white/15 bg-ink/50 p-4;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   }
 
   .input {
     @apply w-full rounded-lg border border-white/20 bg-ink/40 px-3 py-2 text-mist outline-none transition focus:border-sea/60;
-    font-family: var(--font-mono), monospace;
+    font-family: "IBM Plex Mono", "Consolas", monospace;
   }
 
   .field-label {
@@ -63,6 +78,7 @@ body {
 
   .button-primary {
     @apply rounded-lg bg-sea px-4 py-2 font-medium text-ink transition hover:brightness-110;
+    box-shadow: 0 10px 24px rgba(10, 147, 150, 0.35);
   }
 
   .button-secondary {
